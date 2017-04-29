@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AvailabilityWSService WSDL service -->
+
+  <service name="AvailabilityWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.hua.com"/>
+      <parameter name="wsdlServiceElement" value="AvailabilityWSService"/>
+      <parameter name="schemaQualified" value="http://ws.hua.com"/>
+      <parameter name="wsdlServicePort" value="AvailabilityWS"/>
+      <parameter name="className" value="com.hua.ws.AvailabilityWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AvailabilityWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="hello" qname="operNS:hello" xmlns:operNS="http://ws.hua.com" returnQName="retNS:helloReturn" xmlns:retNS="http://ws.hua.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://ws.hua.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="countAvailability" qname="operNS:countAvailability" xmlns:operNS="http://ws.hua.com" returnQName="retNS:countAvailabilityReturn" xmlns:retNS="http://ws.hua.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://ws.hua.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="countAvailability hello"/>
+
+  </service>
+</deployment>
