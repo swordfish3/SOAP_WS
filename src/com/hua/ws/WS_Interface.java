@@ -14,6 +14,6 @@ public interface WS_Interface {
 	
 	
 	@WebMethod
-	String hello(String name);
+	String searchbyBC(Long barcode);
 
 }

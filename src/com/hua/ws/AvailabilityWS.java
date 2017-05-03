@@ -13,9 +13,9 @@ public class AvailabilityWS implements WS_Interface {
 	}
 
 	@Override
-	public String hello(String name) {
+	public String searchbyBC(Long barcode) {
 		// TODO Auto-generated method stub
-		return "Product: " + name;
+		return pm.SearchBarcode(barcode);
 	}
 
 }

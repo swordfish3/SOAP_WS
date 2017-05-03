@@ -2,17 +2,17 @@ package com.hua.ws.db;
 
 public class Pharmacy {
 
-	private long barcode;
+	private Long barcode;
 	private String name;
-	private double wholesale_price;
-	private double retail_price;
+	private Double wholesale_price;
+	private Double retail_price;
 	private String producer;
-	private int available ;
+	private Integer available ;
 	
 	
 	
-	public Pharmacy(long barcode, String name, double wholesale_price, double retail_price, String producer,
-			int available) {
+	public Pharmacy(Long barcode, String name, Double wholesale_price, Double retail_price, String producer,
+			Integer available) {
 		super();
 		this.barcode = barcode;
 		this.name = name;
@@ -21,10 +21,10 @@ public class Pharmacy {
 		this.producer = producer;
 		this.available = available;
 	}
-	public long getBarcode() {
+	public Long getBarcode() {
 		return barcode;
 	}
-	public void setBarcode(long barcode) {
+	public void setBarcode(Long barcode) {
 		this.barcode = barcode;
 	}
 	public String getName() {
@@ -33,16 +33,16 @@ public class Pharmacy {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getWholesale_price() {
+	public Double getWholesale_price() {
 		return wholesale_price;
 	}
-	public void setWholesale_price(double wholesale_price) {
+	public void setWholesale_price(Double wholesale_price) {
 		this.wholesale_price = wholesale_price;
 	}
-	public double getRetail_price() {
+	public Double getRetail_price() {
 		return retail_price;
 	}
-	public void setRetail_price(double retail_price) {
+	public void setRetail_price(Double retail_price) {
 		this.retail_price = retail_price;
 	}
 	public String getProducer() {
@@ -51,10 +51,15 @@ public class Pharmacy {
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
-	public int getAvailable() {
+	public Integer getAvailable() {
 		return available;
 	}
-	public void setAvailable(int available) {
+	public void setAvailable(Integer available) {
 		this.available = available;
 	}
+	
+	
+	public String myPrint() { 
+	   return "Product: "+ name +"\n"+"Wholesale Price: "+ wholesale_price.toString() +"\n"+"Retain Price: "+ retail_price.toString()+"\n"+"Producer"+ producer+"\n"+"Availability: "+ available.toString();
+	} 
 }

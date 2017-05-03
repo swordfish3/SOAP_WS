@@ -4,17 +4,17 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://ws.hua.com" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="hello">
+   <element name="searchbyBC">
     <complexType>
      <sequence>
-      <element name="name" type="xsd:string"/>
+      <element name="barcode" type="xsd:long"/>
      </sequence>
     </complexType>
    </element>
-   <element name="helloResponse">
+   <element name="searchbyBCResponse">
     <complexType>
      <sequence>
-      <element name="helloReturn" type="xsd:string"/>
+      <element name="searchbyBCReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -35,9 +35,25 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
   </schema>
  </wsdl:types>
 
+   <wsdl:message name="searchbyBCResponse">
+
+      <wsdl:part element="impl:searchbyBCResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="countAvailabilityResponse">
 
       <wsdl:part element="impl:countAvailabilityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchbyBCRequest">
+
+      <wsdl:part element="impl:searchbyBC" name="parameters">
 
       </wsdl:part>
 
@@ -51,31 +67,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="helloRequest">
-
-      <wsdl:part element="impl:hello" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="helloResponse">
-
-      <wsdl:part element="impl:helloResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:portType name="AvailabilityWS">
 
-      <wsdl:operation name="hello">
+      <wsdl:operation name="searchbyBC">
 
-         <wsdl:input message="impl:helloRequest" name="helloRequest">
+         <wsdl:input message="impl:searchbyBCRequest" name="searchbyBCRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:helloResponse" name="helloResponse">
+         <wsdl:output message="impl:searchbyBCResponse" name="searchbyBCResponse">
 
        </wsdl:output>
 
@@ -99,17 +99,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="hello">
+      <wsdl:operation name="searchbyBC">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="helloRequest">
+         <wsdl:input name="searchbyBCRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="helloResponse">
+         <wsdl:output name="searchbyBCResponse">
 
             <wsdlsoap:body use="literal"/>
 
