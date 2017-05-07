@@ -20,13 +20,16 @@
       <parameter name="className" value="com.hua.ws.AvailabilityWSSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="AvailabilityWS"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getPurchase" qname="operNS:getPurchase" xmlns:operNS="http://ws.hua.com" returnQName="retNS:getPurchaseReturn" xmlns:retNS="http://ws.hua.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:barcode" xmlns:pns="http://ws.hua.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
       <operation name="searchbyBC" qname="operNS:searchbyBC" xmlns:operNS="http://ws.hua.com" returnQName="retNS:searchbyBCReturn" xmlns:retNS="http://ws.hua.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:barcode" xmlns:pns="http://ws.hua.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="countAvailability" qname="operNS:countAvailability" xmlns:operNS="http://ws.hua.com" returnQName="retNS:countAvailabilityReturn" xmlns:retNS="http://ws.hua.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:name" xmlns:pns="http://ws.hua.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="countAvailability searchbyBC"/>
+      <parameter name="allowedMethods" value="getPurchase countAvailability searchbyBC"/>
 
   </service>
 </deployment>

@@ -23,13 +23,16 @@
  <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
  <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
  <ns1:service name="AvailabilityWS" provider="java:RPC" style="wrapped" use="literal">
-  <ns2:operation name="searchbyBC" qname="ns1:searchbyBC" returnQName="ns1:searchbyBCReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://ws.hua.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+  <ns2:operation name="getPurchase" qname="ns1:getPurchase" returnQName="ns1:getPurchaseReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://ws.hua.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
    <ns2:parameter qname="ns1:barcode" type="xsd:long"/>
   </ns2:operation>
-  <ns1:operation name="countAvailability" qname="ns2:countAvailability" returnQName="ns2:countAvailabilityReturn" returnType="xsd:int" soapAction="" xmlns:ns2="http://ws.hua.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns2:name" type="xsd:string"/>
+  <ns1:operation name="searchbyBC" qname="ns2:searchbyBC" returnQName="ns2:searchbyBCReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://ws.hua.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:barcode" type="xsd:long"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="countAvailability searchbyBC"/>
+  <ns1:operation name="countAvailability" qname="ns3:countAvailability" returnQName="ns3:countAvailabilityReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://ws.hua.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:name" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getPurchase countAvailability searchbyBC"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="AvailabilityWS"/>
   <ns1:parameter name="className" value="com.hua.ws.AvailabilityWS"/>

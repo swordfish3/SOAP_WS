@@ -17,5 +17,11 @@ public class AvailabilityWS implements WS_Interface {
 		// TODO Auto-generated method stub
 		return pm.SearchBarcode(barcode);
 	}
+	
+	@Override
+	public String getPurchase(Long barcode) {
+		// TODO Auto-generated method stub
+		return pm.Purchase(barcode);
+	}
 
 }
