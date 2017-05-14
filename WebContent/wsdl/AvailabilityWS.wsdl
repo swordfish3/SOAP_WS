@@ -4,20 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://ws.hua.com" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="getPurchase">
-    <complexType>
-     <sequence>
-      <element name="barcode" type="xsd:long"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getPurchaseResponse">
-    <complexType>
-     <sequence>
-      <element name="getPurchaseReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="searchbyBC">
     <complexType>
      <sequence>
@@ -31,6 +17,16 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
       <element name="searchbyBCReturn" type="xsd:string"/>
      </sequence>
     </complexType>
+   </element>
+   <element name="getPurchase">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPurchaseResponse">
+    <complexType/>
    </element>
    <element name="countAvailability">
     <complexType>
@@ -73,17 +69,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getPurchaseRequest">
+   <wsdl:message name="searchbyBCRequest">
 
-      <wsdl:part element="impl:getPurchase" name="parameters">
+      <wsdl:part element="impl:searchbyBC" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="searchbyBCRequest">
+   <wsdl:message name="getPurchaseRequest">
 
-      <wsdl:part element="impl:searchbyBC" name="parameters">
+      <wsdl:part element="impl:getPurchase" name="parameters">
 
       </wsdl:part>
 
@@ -99,18 +95,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="AvailabilityWS">
 
-      <wsdl:operation name="getPurchase">
-
-         <wsdl:input message="impl:getPurchaseRequest" name="getPurchaseRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getPurchaseResponse" name="getPurchaseResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="searchbyBC">
 
          <wsdl:input message="impl:searchbyBCRequest" name="searchbyBCRequest">
@@ -118,6 +102,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:searchbyBCResponse" name="searchbyBCResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPurchase">
+
+         <wsdl:input message="impl:getPurchaseRequest" name="getPurchaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPurchaseResponse" name="getPurchaseResponse">
 
        </wsdl:output>
 
@@ -141,24 +137,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="getPurchase">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getPurchaseRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getPurchaseResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="searchbyBC">
 
          <wsdlsoap:operation soapAction=""/>
@@ -170,6 +148,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="searchbyBCResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPurchase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPurchaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPurchaseResponse">
 
             <wsdlsoap:body use="literal"/>
 

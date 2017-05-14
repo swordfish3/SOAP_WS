@@ -17,5 +17,5 @@ public interface WS_Interface {
 	String searchbyBC(Long barcode);
 	
 	@WebMethod
-	String getPurchase(Long barcode);
+	void getPurchase(String name);
 }

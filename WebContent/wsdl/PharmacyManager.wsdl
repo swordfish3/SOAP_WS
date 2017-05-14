@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://db.ws.hua.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://db.ws.hua.com" xmlns:intf="http://db.ws.hua.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://db.ws.hua.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="SearchBarcode">
+    <complexType>
+     <sequence>
+      <element name="barcode" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SearchBarcodeResponse">
+    <complexType>
+     <sequence>
+      <element name="SearchBarcodeReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAvailability">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAvailabilityResponse">
+    <complexType>
+     <sequence>
+      <element name="getAvailabilityReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="Purchase">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="PurchaseResponse">
+    <complexType>
+     <sequence>
+      <element name="PurchaseReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="SearchBarcodeResponse">
+
+      <wsdl:part element="impl:SearchBarcodeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PurchaseRequest">
+
+      <wsdl:part element="impl:Purchase" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PurchaseResponse">
+
+      <wsdl:part element="impl:PurchaseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SearchBarcodeRequest">
+
+      <wsdl:part element="impl:SearchBarcode" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAvailabilityRequest">
+
+      <wsdl:part element="impl:getAvailability" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAvailabilityResponse">
+
+      <wsdl:part element="impl:getAvailabilityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PharmacyManager">
+
+      <wsdl:operation name="SearchBarcode">
+
+         <wsdl:input message="impl:SearchBarcodeRequest" name="SearchBarcodeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SearchBarcodeResponse" name="SearchBarcodeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAvailability">
+
+         <wsdl:input message="impl:getAvailabilityRequest" name="getAvailabilityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAvailabilityResponse" name="getAvailabilityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Purchase">
+
+         <wsdl:input message="impl:PurchaseRequest" name="PurchaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:PurchaseResponse" name="PurchaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PharmacyManagerSoapBinding" type="impl:PharmacyManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="SearchBarcode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SearchBarcodeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SearchBarcodeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAvailability">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAvailabilityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAvailabilityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="Purchase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="PurchaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="PurchaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PharmacyManagerService">
+
+      <wsdl:port binding="impl:PharmacyManagerSoapBinding" name="PharmacyManager">
+
+         <wsdlsoap:address location="http://localhost:8080/SOAP_WS/services/PharmacyManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

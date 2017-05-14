@@ -73,9 +73,9 @@ public String SearchBarcode(Long barcode){
 		return counter;
 	}
 	
-	public String Purchase(Long barcode){
+	public void Purchase(String name){
 		 
-		String name = null;
+		Long barcode = null;
 		Double wholesale_price = null;
 		Double retail_price = null;
 		String producer = null;
@@ -83,28 +83,33 @@ public String SearchBarcode(Long barcode){
 		//String result = "" ;
 		Pharmacy product = null;
 		try {
-			PreparedStatement query = connection.prepareStatement("select name,wholesale_price,retail_price,producer,availability from pharmacy where barcode = ?");
-			query.setString(1,barcode.toString());
+			PreparedStatement query = connection.prepareStatement("select wholesale_price,retail_price,producer,availability,barcode from pharmacy where name= ?");
+			query.setString(1,name);
 			ResultSet reply = query.executeQuery();
 			while(reply.next()){
 				
-				name = reply.getString("name");
+				barcode = reply.getLong("barcode");
 				wholesale_price = reply.getDouble("wholesale_price");
 				retail_price = reply.getDouble("retail_price");
 				producer = reply.getString("producer");
 				available = reply.getInt("availability");
-				available = available -1;
-				PreparedStatement query2 = connection.prepareStatement("update pharmacy set availability =?  where barcode = ?");
-				
-				query2.setString(1,available.toString());
-				query2.setString(2,barcode.toString());
-				query2.executeUpdate();
-				
-				//while(reply2.next()){
+				if(available>0)
+				{
+					available = available -1;
 					
-				//}
-				//result = "Name: " +name+"\n" + wholesale_price +"\n"+ retail_price+"\n" + producer +"\n"+ available;
-				product = new Pharmacy(barcode,name,wholesale_price,retail_price,producer,available);
+					PreparedStatement query2 = connection.prepareStatement("update pharmacy set availability =?  where name = ?");
+					
+					query2.setString(1,available.toString());
+					query2.setString(2,name);
+					query2.executeUpdate();
+					
+					//while(reply2.next()){
+					
+					//}
+					//result = "Name: " +name+"\n" + wholesale_price +"\n"+ retail_price+"\n" + producer +"\n"+ available;
+					product = new Pharmacy(barcode,name,wholesale_price,retail_price,producer,available);
+				}
+				
 			}
 			
 			
@@ -115,7 +120,7 @@ public String SearchBarcode(Long barcode){
 			e.printStackTrace();
 		}
 		
-		return product.myPrint();
+		//return product.myPrint();
 			
 		}
 	

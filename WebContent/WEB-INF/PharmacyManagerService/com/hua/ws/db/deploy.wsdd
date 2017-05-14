@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PharmacyManagerService WSDL service -->
+
+  <service name="PharmacyManager" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://db.ws.hua.com"/>
+      <parameter name="wsdlServiceElement" value="PharmacyManagerService"/>
+      <parameter name="schemaQualified" value="http://db.ws.hua.com"/>
+      <parameter name="wsdlServicePort" value="PharmacyManager"/>
+      <parameter name="className" value="com.hua.ws.db.PharmacyManager"/>
+      <parameter name="wsdlPortType" value="PharmacyManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://db.ws.hua.com" xmlns:retNS="http://db.ws.hua.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchBarcode" qname="operNS:SearchBarcode" returnQName="retNS:SearchBarcodeReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://db.ws.hua.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:barcode" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://db.ws.hua.com" xmlns:retNS="http://db.ws.hua.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAvailability" qname="operNS:getAvailability" returnQName="retNS:getAvailabilityReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://db.ws.hua.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://db.ws.hua.com" xmlns:retNS="http://db.ws.hua.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="purchase" qname="operNS:Purchase" returnQName="retNS:PurchaseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://db.ws.hua.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAvailability purchase searchBarcode"/>
+
+  </service>
+</deployment>
